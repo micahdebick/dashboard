@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta http-equiv="refresh" content="600" />
+<style>
+body {
+    background-color: #000000;
+}
+div {
+    text-align:center;
+}
+</style>
+
+<div id="clockbox"></div>
+
+<script type="text/javascript">
+var tday=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+var tmonth=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+if(nhour==0){ap=" AM";nhour=12;}
+else if(nhour<12){ap=" AM";}
+else if(nhour==12){ap=" PM";}
+else if(nhour>12){ap=" PM";nhour-=12;}
+
+if(nmin<=9) nmin="0"+nmin;
+<!-- ## if(nsec<=9) nsec="0"+nsec; -->
+
+var clocktext="<span style=\"font:97pt Arial; color:#f9f7f7;\">"+nhour+":"+nmin+""+ap+"</span> <br> <span style=\"font:14pt Arial; color:#c2c2c2;\">"+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+"</span>";
+
+document.getElementById('clockbox').innerHTML=clocktext;
+}
+
+GetClock();
+setInterval(GetClock,1000);
+</script>
+
+<!--Below is a weather widget from weatherwidget.io you can go there to personalize this code for your own needs  -->
+
+<br>
+<a class="weatherwidget-io" href="https://forecast7.com/en/35d86n85d72/antioch/?unit=us" data-label_1="ANTIOCH" data-label_2="WEATHER" data-days="5" data-theme="pure" data-basecolor="#000000" data-textcolor="#dcdcdc" data-highcolor="#c4c4c4" data-lowcolor="#989898" data-suncolor="#ffffff" data-mooncolor="#f0f0f0" data-cloudcolor="#c2c2c2" data-raincolor="#b6b6b6" data-snowcolor="#d6d6d6" >ANTIOCH WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+
+<!-- So much fun learning, so little time!  - Randynose.com   -->
