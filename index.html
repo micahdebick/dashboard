@@ -187,6 +187,7 @@
         function processActualWeather(data) {
             icon.className = getIconClassName(data.weather[0], new Date(data.dt * 1000));
             temp.innerHTML = Math.round(data.main.temp);
+            city.innerHTML = data.name;
             description.innerHTML = data.weather[0].description;
             lastUpdate.innerHTML = momentWithCorrectUtcOffset(new Date()).format(timeFormat) + "/" + momentWithCorrectUtcOffset(new Date(data.dt * 1000)).format(timeFormat);
 
@@ -529,41 +530,10 @@
     <div id="iconWrapper"><i id="icon"></i></div>
     <div class="tempWrapper">
         <div id="temp"></div>
+        <!--<i class="celsius wi wi-celsius"></i>-->
     </div>
     <div id="description"></div>
     <div id="lastUpdate"></div>
-
-<body>
-
-<div id="clockbox" class="clobo">
-</div>
-
-<script type="text/javascript">
-var tday=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
-var tmonth=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
-function GetClock(){
-var d=new Date();
-var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
-var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
-
-if(nhour==0){ap=" AM";nhour=12;}
-else if(nhour<12){ap=" ";}
-else if(nhour==12){ap=" ";}
-else if(nhour>12){ap=" ";nhour-=12;}
-
-if(nmin<=9) nmin="0"+nmin;
-<!-- ## if(nsec<=9) nsec="0"+nsec; -->
-
-var clocktext="<span style=\"font:Arial;\">"+nhour+":"+nmin+""+ap+"</span> <br> </span>";
-
-document.getElementById('clockbox').innerHTML=clocktext;
-}
-
-GetClock();
-setInterval(GetClock,1000);
-</script>
-
     <div class="forecast">
         <div class="col col1">
             <div id="time1" class="colTime"></div>
